@@ -16,12 +16,12 @@ const App = () => {
 
   return (
     <>
-      <div className="max-w-screen-sm mx-auto mt-9 pb-3">
+      <div className="max-w-screen-bio mx-auto mt-9 pb-1">
         {/* Brand Identity Section */}
         {data.brand && <BrandIdentity brand={data.brand} />}
       </div>
       <div className="w-full border-t border-gray-300 my-6" />
-      <div className="max-w-screen-sm mx-auto p-4">
+      <div className="max-w-screen-bio mx-auto p-4">
         {/* Meditation Slider Section */}
         <MeditationSlider
           playlistId={MEDITATION_PLAYLIST_ID}
@@ -29,7 +29,7 @@ const App = () => {
         />
       </div>
       <div className="w-full border-t border-gray-300 my-6" />
-      <div className="max-w-screen-sm mx-auto p-4">
+      <div className="max-w-screen-bio mx-auto p-4">
         {/* Meditation Slider Section */}
         <SubliminalAudioSlider
           playlistId={SUBLIMINALS_PLAYLIST_ID}
@@ -37,19 +37,19 @@ const App = () => {
         />
       </div>
       <div className="w-full border-t border-gray-300 my-6" />
-      <div className="max-w-screen-sm mx-auto p-4">
+      <div className="max-w-screen-bio mx-auto p-4">
         {/* Book Promo Section */}
         {data.books && data.books.length > 0 && (
           <BookPromo book={data.books[0]} />
         )}
       </div>
       <div className="w-full border-t border-gray-300 my-6" />
-      <div className="max-w-screen-sm mx-auto p-4">
+      <div className="max-w-screen-bio mx-auto p-4">
         {/* Blog Articles Slider Section */}
         <BlogArticlesSlider apiUrl={WP_API_URL} />
       </div>
       <div className="w-full border-t border-gray-300 my-6" />
-      <div className="max-w-screen-sm mx-auto p-4">
+      <div className="max-w-screen-bio mx-auto p-4">
         {/* Novelties Section */}
         {data.novelties && (
           <NoveltiesSlider novelties={data.novelties} brand={data.brand} />

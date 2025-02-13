@@ -37,7 +37,7 @@ const BookPromo = ({ book }) => {
           <img
             src={book.cover}
             alt={book.title}
-            className="max-w-sm mx-auto rounded-xl w-full"
+            className="max-w-screen-bio mx-auto rounded-xl w-full"
           />
         </div>
         <div className="min-w-[90%]">
@@ -95,11 +95,11 @@ const BookPromo = ({ book }) => {
         {book.reviews.map((review, index) => (
           <SwiperSlide
             key={index}
-            className="w-[75%] md:w-[75%] bg-gray-100 p-6 rounded-xl"
+            className="w-[81%] md:w-[81%] bg-gray-100 p-5 rounded-xl"
           >
             <h4 className="font-bold">{review.title}</h4>
             {/* Reviews Texts */}
-            <p className="mt-1 max-h-[150px] overflow-y-auto pr-2 text-sm">
+            <p className="mt-1 max-h-[180px] overflow-y-auto pr-1 text-md">
               {review.comment}
             </p>
             <p className="mt-5 italic text-sm">{review.reviewer}</p>

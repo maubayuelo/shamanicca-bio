@@ -24,30 +24,43 @@ const BlogArticlesSlider = ({ apiUrl }) => {
           headers: {
             "Content-Type": "application/json",
           },
+          params: {
+            _embed: "wp:featuredmedia", // Embed media details in the API response
+          },
         });
 
         const articlesData = response.data;
 
-        // Fetch featured images separately
-        const articlesWithImages = await Promise.all(
-          articlesData.map(async (article) => {
-            if (article.featured_media) {
-              try {
-                const mediaResponse = await axios.get(
-                  `http://shamanicca.local/wp-json/wp/v2/media/${article.featured_media}`
-                );
-                return {
-                  ...article,
-                  featured_image_url: mediaResponse.data.source_url,
-                };
-              } catch (mediaError) {
-                console.error("Error fetching featured image:", mediaError);
-                return { ...article, featured_image_url: "/default-image.jpg" };
-              }
-            }
-            return { ...article, featured_image_url: "/default-image.jpg" };
-          })
-        );
+        // Function to get fallback image URL
+        const getFallbackImageUrl = async () => {
+          try {
+            const fallbackResponse = await axios.get(
+              "https://shamanicca.com/wp-json/wp/v2/media/257"
+            );
+            return fallbackResponse.data.source_url || "/default-image.jpg";
+          } catch (error) {
+            console.error("Error fetching fallback image:", error);
+            return "/default-image.jpg";
+          }
+        };
+
+        // Get the fallback image URL
+        const fallbackImageUrl = await getFallbackImageUrl();
+
+        // Process articles
+        const articlesWithImages = articlesData.map((article) => {
+          const media = article._embedded?.["wp:featuredmedia"]?.[0];
+
+          return {
+            ...article,
+            featured_image_url:
+              media?.media_details?.sizes?.medium?.source_url ||
+              media?.source_url || // Fallback to full-size image
+              (article.featured_media === 257
+                ? fallbackImageUrl
+                : "/default-image.jpg"), // Handle ID 257 case
+          };
+        });
 
         setArticles(articlesWithImages);
         setLoading(false);

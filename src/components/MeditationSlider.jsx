@@ -96,7 +96,7 @@ const MeditationSlider = ({ playlistId, apiKey }) => {
                   className="rounded-xl w-full"
                 />
               </a>
-              <p className="mt-2 font-bold text-sm">{video.snippet.title}</p>
+              <p className="mt-2 font-bold text-md">{video.snippet.title}</p>
             </SwiperSlide>
           ))}
         </Swiper>
