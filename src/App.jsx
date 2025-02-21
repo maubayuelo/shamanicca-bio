@@ -12,7 +12,9 @@ const App = () => {
   const API_KEY = "AIzaSyBZl26h5BtDIwBRVg16crtbYE7MvMaayPM";
   const MEDITATION_PLAYLIST_ID = "PLYLd6kR0uMdMqh0aRC8E2cn_pwzbTkrjO";
   const SUBLIMINALS_PLAYLIST_ID = "PLYLd6kR0uMdONcS-wsEW5hX8rOINPTZUM";
-  const WP_API_URL = "https://shamanicca.com/wp-json/wp/v2/posts?categories=82";
+  //const WP_API_URL = "https://shamanicca.com/cms/wp-json/wp/v2/posts?categories=82";
+  const WP_API_URL =
+    "https://shamanicca.com/cms/wp-json/wp/v2/posts?categories=82";
 
   return (
     <>

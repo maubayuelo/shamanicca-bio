@@ -30,12 +30,13 @@ const BlogArticlesSlider = ({ apiUrl }) => {
         });
 
         const articlesData = response.data;
+        console.log(articlesData);
 
         // Function to get fallback image URL
         const getFallbackImageUrl = async () => {
           try {
             const fallbackResponse = await axios.get(
-              "https://shamanicca.com/wp-json/wp/v2/media/257"
+              "https://shamanicca.com/cms/wp-json/wp/v2/257"
             );
             return fallbackResponse.data.source_url || "/default-image.jpg";
           } catch (error) {
@@ -65,7 +66,10 @@ const BlogArticlesSlider = ({ apiUrl }) => {
         setArticles(articlesWithImages);
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching articles:", err);
+        console.error(
+          "Error fetching articles:",
+          err.response ? err.response.data : err.message
+        );
         setError("Failed to load articles. Please try again.");
         setLoading(false);
       }
@@ -128,7 +132,7 @@ const BlogArticlesSlider = ({ apiUrl }) => {
                 {article.title.rendered}
               </h3>
               <a
-                href={article.link}
+                href={`https://shamanicca.com/post/${article.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary mt-2 inline-block"
