@@ -36,7 +36,7 @@ const BlogArticlesSlider = ({ apiUrl }) => {
         const getFallbackImageUrl = async () => {
           try {
             const fallbackResponse = await axios.get(
-              "https://shamanicca.com/cms/wp-json/wp/v2/257"
+              "https://master.shamanicca.com/wp-json/wp/v2/media/257"
             );
             return fallbackResponse.data.source_url || "/default-image.jpg";
           } catch (error) {
@@ -132,7 +132,7 @@ const BlogArticlesSlider = ({ apiUrl }) => {
                 {article.title.rendered}
               </h3>
               <a
-                href={`https://shamanicca.com/post/${article.slug}`}
+                href={`https://master.shamanicca.com/${article.slug}/`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary mt-2 inline-block"
