@@ -132,7 +132,7 @@ const BlogArticlesSlider = ({ apiUrl }) => {
                 {article.title.rendered}
               </h3>
               <a
-                href={`https://master.shamanicca.com/${article.slug}/`}
+                href={`https://shamanicca.com/blog/${article.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary mt-2 inline-block"
